@@ -1,0 +1,22 @@
+{
+  "name": "pdf-app",
+  "version": "1.0.0",
+  "description": "web app that lets you upload images and converts them into a pdf",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx nodemon --env-file=config/.env app.js ",
+    "test2": "node --env-file=config/.env app.js"
+  },
+  "type": "module",
+  "author": "Abhay Panchoo",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "jimp": "^1.6.0",
+    "mongoose": "^8.13.2",
+    "multer": "^1.4.5-lts.2",
+    "pdfkit": "^0.17.0"
+  }
+}
