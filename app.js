@@ -11,7 +11,14 @@ const port = 3001;
 const __dirname = path.resolve("app");
 
 const app = express()
-const upload = multer({ dest: 'uploads/' })
+
+var storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './uploads/');
+     }
+});
+
+const upload = multer({ storage: storage })
 
 //const uri = `mongodb+srv://${process.env.db_username}:${process.env.db_password}@pdf-app.jyztzhr.mongodb.net/?retryWrites=true&w=majority&appName=pdf-app`
 

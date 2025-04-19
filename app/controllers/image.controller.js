@@ -13,7 +13,7 @@ export const ImageController = async(req, res) => {
 
     const images = req.files;
     for(let i = 0; i < images.length; i++){
-        const path = `${images[i].destination}${images[i].filename}`
+        const path = `${images[i].destination}/${images[i].filename}`
         doc.image(path, 0, 0, {align: 'center', width: doc.page.width, height: doc.page.height})
         if(i < images.length -1)doc.addPage()
         fs.unlink(path, (err) => {
