@@ -2,7 +2,7 @@ import PDFDocument from 'pdfkit'
 import fs from 'fs'
 
 export const ImageController = async(req, res) => {
-    
+
     const doc = new PDFDocument()
 
     const outputFileStream = `output/${req.body.name}.pdf`
@@ -26,7 +26,11 @@ export const ImageController = async(req, res) => {
     doc.end()
 
     writeStream.on('finish', function () {
-        return res.status(200).download(outputFileStream, () => {
+        return res.status(200).download(outputFileStream, (err) => {
+            if(err){
+                console.log(err)
+                console.log(res.headersSent)
+            }
             fs.unlink(outputFileStream, (err) => {
                 if (err) {
                     console.error(`Error removing file: ${err}`);return;
